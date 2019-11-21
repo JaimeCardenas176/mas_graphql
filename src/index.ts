@@ -1,4 +1,4 @@
-const { makeExecutableSchema } = require('graphql')
+const { makeExecutableSchema } = require('graphql-tools')
 const express = require('express')
 const gqlMiddleware = require('express-graphql')
 const { readFileSync } = require('fs')
@@ -14,6 +14,7 @@ const typeDefs = readFileSync(
     join(__dirname, 'lib', 'schema.graphql'),
     'utf-8'
 )
+
 const schema = makeExecutableSchema({typeDefs, resolvers});
 
 app.use(endpoint, gqlMiddleware({

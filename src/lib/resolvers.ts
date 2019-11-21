@@ -23,7 +23,13 @@ const courses = [
 ]
 
 module.exports = {
-    getCourses: () => {
-        return courses;
+    Query: {
+        getCourses: () => {
+            return courses;
+        },
+        getCourse: (root, args, context) => {
+            const curso = courses.find(c => c._id === args.id)
+            return curso;
+        }
     }
 }
